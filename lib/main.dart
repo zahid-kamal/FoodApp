@@ -1,6 +1,8 @@
+import 'package:ecommers/pages/food/popular_food_detail.dart';
+import 'package:ecommers/pages/food/recommended_food_detail.dart';
+import 'package:ecommers/pages/home/main_food_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'home/main_food_page.dart';
 
 void main() {
   runApp(App());
@@ -11,10 +13,12 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Demo',
-      home: MainFoodPage(),
+      //home: MainFoodPage(),
+      //home: PopularFoodDetail(),
+      home: RecommendedFoodDetail(),
     );
   }
 }

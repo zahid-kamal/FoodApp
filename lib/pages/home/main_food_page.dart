@@ -1,10 +1,10 @@
-import 'package:ecommers/home/food_page_body.dart';
 import 'package:ecommers/utils/dimensions.dart';
 import 'package:ecommers/widgets/big_text.dart';
 import 'package:ecommers/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/colors.dart';
+import '../../utils/colors.dart';
+import 'food_page_body.dart';
 
 class MainFoodPage extends StatelessWidget {
   const MainFoodPage({Key? key}) : super(key: key);
@@ -54,7 +54,7 @@ class MainFoodPage extends StatelessWidget {
                 ]),
           ),
         ),
-        Expanded(
+        const Expanded(
             child: SingleChildScrollView(
           child: FoodPageBody(),
         ))
