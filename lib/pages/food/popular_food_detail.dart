@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../../utils/colors.dart';
 
-import '../../widgets/ExpandableTextWidget.dart';
+import '../../widgets/DescriptionTextWidget.dart';
 import '../../widgets/big_text.dart';
 import '../../widgets/icon_and_text.dart';
 import '../../widgets/small_text.dart';

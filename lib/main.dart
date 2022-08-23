@@ -15,7 +15,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Demo',
+      title: 'MAJAFood',
       //home: MainFoodPage(),
       //home: PopularFoodDetail(),
       home: RecommendedFoodDetail(),

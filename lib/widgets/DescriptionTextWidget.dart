@@ -16,7 +16,8 @@ class DescriptionTextWidget extends StatefulWidget {
 class _DescriptionTextWidgetState extends State<DescriptionTextWidget> {
   late String firstHalf;
   late String secondHalf;
-  final double size = Dimensions.textDecription;
+  //final double size = Dimensions.textDecription;
+  final double size = 150;
 
   bool flag = true;
 
@@ -41,8 +42,9 @@ class _DescriptionTextWidgetState extends State<DescriptionTextWidget> {
           ? new Text(firstHalf)
           : new Column(
               children: <Widget>[
-                
-                Text(flag ? (firstHalf + "...") : (firstHalf + secondHalf)),
+                Text(
+                    style: TextStyle(height: 1.5, color: Colors.black54),
+                    flag ? (firstHalf + "...") : (firstHalf + secondHalf)),
                 InkWell(
                   child: new Row(
                     mainAxisAlignment: MainAxisAlignment.start,
