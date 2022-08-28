@@ -1,7 +1,10 @@
+import 'package:ecommers/pages/home/food_page_body.dart';
+import 'package:ecommers/pages/home/main_food_page.dart';
 import 'package:ecommers/utils/dimensions.dart';
 import 'package:ecommers/widgets/app_column.dart';
 import 'package:ecommers/widgets/app_icon.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../utils/colors.dart';
 
@@ -42,7 +45,11 @@ class PopularFoodDetail extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Appicon(icon: Icons.arrow_back_ios),
+                GestureDetector(
+                    onTap: () {
+                      Get.to(() => MainFoodPage());
+                    },
+                    child: Appicon(icon: Icons.arrow_back_ios)),
                 Appicon(icon: Icons.shopping_cart_checkout_outlined),
               ],
             ),

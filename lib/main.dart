@@ -1,10 +1,16 @@
 import 'package:ecommers/pages/food/popular_food_detail.dart';
 import 'package:ecommers/pages/food/recommended_food_detail.dart';
 import 'package:ecommers/pages/home/main_food_page.dart';
+import 'package:ecommers/routes/route_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'controllers/popular_product_controller.dart';
+import 'controllers/recommended_product_controller.dart';
+import 'helper/dependencies.dart' as dep;
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dep.init();
   runApp(App());
 }
 
@@ -13,12 +19,17 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    Get.find<PopullarProductController>().getPopularProductList();
+    Get.find<RecommendedProductController>().getRecommendedProductList();
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'MAJAFood',
-      //home: MainFoodPage(),
+      home: MainFoodPage(),
+      initialRoute: RouteHelper.initial,
+      getPages: RouteHelper.routes,
       //home: PopularFoodDetail(),
-      home: RecommendedFoodDetail(),
+      //home: RecommendedFoodDetail(),
     );
   }
 }
+//7.52
