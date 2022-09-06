@@ -1,26 +1,40 @@
+import 'package:ecommers/controllers/recommended_product_controller.dart';
+import 'package:ecommers/routes/route_helper.dart';
+import 'package:ecommers/utils/app_constants.dart';
 import 'package:ecommers/utils/colors.dart';
 import 'package:ecommers/utils/dimensions.dart';
 import 'package:ecommers/widgets/app_icon.dart';
 import 'package:ecommers/widgets/big_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../widgets/DescriptionTextWidget.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
-  const RecommendedFoodDetail({Key? key}) : super(key: key);
+  final int pageId;
+  const RecommendedFoodDetail({Key? key, required this.pageId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product =
+        Get.find<RecommendedProductController>().recommendedProductList[pageId];
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
+            automaticallyImplyLeading: false,
             toolbarHeight: 70,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Appicon(icon: Icons.clear),
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(RouteHelper.getInitial());
+                  },
+                  child: Appicon(icon: Icons.clear),
+                ),
                 Appicon(icon: Icons.shopping_cart_outlined)
               ],
             ),
@@ -30,7 +44,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                   child: Center(
                       child: BigText(
                     size: Dimensions.font26,
-                    text: "Chinese Side",
+                    text: product.name!,
                   )),
                   width: double.maxFinite,
                   padding: EdgeInsets.only(top: 5, bottom: 10),
@@ -45,8 +59,9 @@ class RecommendedFoodDetail extends StatelessWidget {
             backgroundColor: Colors.yellow,
             expandedHeight: 300.0,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                "assets/image/image2.png",
+              background: Image.network(
+                AppConstants.BASE_URL + AppConstants.UPLOAD_URL + product.img!,
+                width: double.maxFinite,
                 fit: BoxFit.cover,
               ),
             ),
@@ -58,8 +73,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                 margin: EdgeInsets.only(
                     left: Dimensions.width20, right: Dimensions.width20),
                 child: DescriptionTextWidget(
-                  text:
-                      "Flutter is Google’s mobile UI framework for crafting high-quality native interfaces on iOS and Android in record time. Flutter works with existing code, is used by developers and organizations around the world, and is free and open source.Flutter is Google’s mobile UI framework for crafting high-quality native interfaces on iOS and Android in record time. Flutter works with existing code, is used by developers and organizations around the world, and is free and open source.Flutter is Google’s mobile UI framework for crafting high-quality native interfaces on iOS and Android in record time. Flutter works with existing code, is used by developers and organizations around the world, and is free and open source.Flutter is Google’s mobile UI framework for crafting high-quality native interfaces on iOS and Android in record time. Flutter works with existing code, is used by developers and organizations around the world, and is free and open source.Flutter is Google’s mobile UI framework for crafting high-quality native interfaces on iOS and Android in record time. Flutter works with existing code, is used by developers and organizations around the world, and is free and open source.Flutter is Google’s mobile UI framework for crafting high-quality native interfaces on iOS and Android in record time. Flutter works with existing code, is used by developers and organizations around the world, and is free and open source.Flutter is Google’s mobile UI framework for crafting high-quality native interfaces on iOS and Android in record time. Flutter works with existing code, is used by developers and organizations around the world, and is free and open source.Flutter is Google’s mobile UI framework for crafting high-quality native interfaces on iOS and Android in record time. Flutter works with existing code, is used by developers and organizations around the world, and is free and open source.Flutter is Google’s mobile UI framework for crafting high-quality native interfaces on iOS and Android in record time. Flutter works with existing code, is used by developers and organizations around the world, and is free and open source.Flutter is Google’s mobile UI framework for crafting high-quality native interfaces on iOS and Android in record time. Flutter works with existing code, is used by developers and organizations around the world, and is free and open source.Flutter is Google’s mobile UI framework for crafting high-quality native interfaces on iOS and Android in record time. Flutter works with existing code, is used by developers and organizations around the world, and is free and open source.Flutter is Google’s mobile UI framework for crafting high-quality native interfaces on iOS and Android in record time. Flutter works with existing code, is used by developers and organizations around the world, and is free and open source.",
+                  text: product.description,
                 ),
               )
             ],
@@ -84,7 +98,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                     backgroundColor: Appcolors.mainColor,
                     icon: Icons.remove),
                 BigText(
-                  text: "\$12.88 " + " X " + " 0 ",
+                  text: "\$ ${product.price!}  X  0 ",
                   color: Colors.black,
                   size: Dimensions.font26,
                 ),
